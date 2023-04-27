@@ -16,7 +16,7 @@ function Signup() {
         event.preventDefault();
 
         try {
-            await axios.post('http://localhost:4000/api/signup', {
+            await axios.post('http://localhost:3000/signup', {
                 email,
                 password
             })
@@ -51,7 +51,7 @@ function Signup() {
             <p>OR</p>
             <br />
             {/*If the user doesn't have an account they can clik Sign up instead which will redirect them to the signup link*/}
-            <Link to="/">Login</Link>
+            <Link to="/api/">Login</Link>
         </div>
     );
 }
