@@ -16,7 +16,7 @@ function Signup() {
         event.preventDefault();
 
         try {
-            await axios.post("http://localhost:3000/signup", {
+            await axios.post('http://localhost:4000/api/signup', {
                 email,
                 password
             })

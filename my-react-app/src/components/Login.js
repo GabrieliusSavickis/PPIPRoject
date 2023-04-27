@@ -17,7 +17,7 @@ function Login() {
 
         try {
             //Passing two variables
-            await axios.post("http://localhost:3000/", {
+            await axios.post('http://localhost:4000/api/', {
                 email, password
             })
                 .then(res => {
