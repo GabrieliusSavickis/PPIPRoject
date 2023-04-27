@@ -1,90 +1,80 @@
-const express = require('express')
-const app = express()
-const port = 4000
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const mongoose = require("mongoose")
+const express = require('express');
+const app = express();
+const port = 4000;
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 app.use(express.json())
-
 // Allows anyone to access the data
 app.use(cors());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
-mongoose.connect("mongodb+srv://Ppi:Access@ppi.md1bby9.mongodb.net/test")
-.then(()=>{
-  console.log("mongodb connected");
-})
-.catch(()=>{
-  console.log('failed');
-})
+main().catch(err => console.log(err));
+async function main() {
+  await mongoose.connect("mongodb+srv://Ppi:Access@ppi.md1bby9.mongodb.net/test");
+  // using await because database has authentication
+}
 
-const newSchema= new mongoose.Schema({
-  email:{
+const newSchema = new mongoose.Schema({
+  email: {
     type: String,
     required: true
   },
-  password:{
+  password: {
     type: String,
     required: true
   }
 })
 
-const users = mongoose.model("collection", newSchema)
+const collection = mongoose.model("collection", newSchema)
 
-app.post("/",cors(),async (req,res)=>{
+app.post("/", cors(), async (req, res) => {
   //Define two variables in object form
-  const{email,password}=req.body
-  try{
+  const { email, password } = req.body
+  try {
     //Check if the email already exists
-    const checkEmail=await users.findOne({email})
-    if(checkEmail){
+    const checkEmail = await collection.findOne({ email })
+    if (checkEmail) {
       res.json("emailExists")
     }
-    else{
+    else {
       res.json("emailNotExist")
     }
   }
-  catch(event){
+  catch (event) {
     res.json("emailNotExist")
 
   }
 })
 
-app.post("/signup",cors(),async (req,res)=>{
+app.post("/signup", cors(), async (req, res) => {
 
   //Define two variables in object form
-  const{email,password}=req.body
+  const { email, password } = req.body
 
   //Since we are creating new user here, we need to create a new object to store the data
-  const credentials={
-    email:email,
-    password:password
+  const data = {
+    email: email,
+    password: password
   }
 
-  try{
+  try {
     //Check if the email already exists
-    const checkEmail=await users.findOne({email})
-    if(checkEmail){
+    const checkEmail = await collection.findOne({ email })
+    if (checkEmail) {
       res.json("emailExists")
     }
-    else{
+    else {
       res.json("emailNotExist")
       //If email is not taken then it will be accepted and be stored in MongoDB
-      await users.insertMany([credentials])
+      await collection.insertMany([data])
     }
   }
-  catch(event){
+  catch (event) {
     res.json("emailNotExist")
 
   }
@@ -101,13 +91,13 @@ app.get('/F1', (req, res) => {
 
 
 //link to page datarep
-app.get('/MotoGP', (req, res)=>{
-    res.send("Welcome to MOTOGP")
+app.get('/MotoGP', (req, res) => {
+  res.send("Welcome to MOTOGP")
 })
 
 //linking to a sendfile response
-app.get('/test', (req, res)=>{
-  res.sendFile(__dirname+'/index.html')
+app.get('/test', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
 })
 
 //Listen to the main port
@@ -115,4 +105,4 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
-module.exports = users
+module.exports = collection

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 
@@ -21,10 +21,10 @@ function Login() {
                 email, password
             })
                 .then(res => {
-                    if (res.credentials = "emailExist") {
+                    if (res.data==="emailExist") {
                         redirect("/Home", { state: { id: email } })
                     }
-                    else if (res.credentials = "emailNotExist") {
+                    else if (res.data==="emailNotExist") {
                         alert("Email does not exist")
                     }
                 })

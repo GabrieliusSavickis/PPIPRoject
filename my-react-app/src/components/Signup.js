@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 
 
-function Login() {
+function Signup() {
 
     //New variable to move between pages
     const redirect = useNavigate();
@@ -20,11 +20,11 @@ function Login() {
                 email, password
             })
             .then(res => {
-                if (res.credentials = "emailExist") {
+                if (res.data==="emailExist") {
                     alert("User already exists")
                     
                 }
-                else if (res.credentials = "emailNotExist") {
+                else if (res.data==="emailNotExist") {
                     redirect("/Home", { state: { id: email } })
                 }
             })
@@ -54,8 +54,8 @@ function Login() {
             <p>OR</p>
             <br />
             {/*If the user doesn't have an account they can clik Sign up instead which will redirect them to the signup link*/}
-            <Link to="/signup">Login</Link>
+            <Link to="/">Login</Link>
         </div>
     );
 }
-export default Login
+export default Signup
