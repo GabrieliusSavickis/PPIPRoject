@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import axios from "axios"
-import { useNavigate, Link } from "react-router-dom"
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate, Link } from "react-router-dom";
 
 
 function Signup() {
@@ -11,13 +11,14 @@ function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function submitLogin(event) {
+    async function submitSignup(event) {
         //If the event does not get explicitly handled, its default action should not be taken
         event.preventDefault();
 
         try {
             await axios.post("http://localhost:3000/signup", {
-                email, password
+                email,
+                password
             })
             .then(res => {
                 if (res.data==="emailExist") {
@@ -45,9 +46,9 @@ function Signup() {
 
             {/*This is a form for a user to login*/}
             <form action="POST">
-                <input type="email" onChange={(event) => { setEmail(event.target.value) }} placeholder="Email" />
-                <input type="password" onChange={(event) => { setPassword(event.target.value) }} placeholder="Password" />
-                <input type="submit" onClick={submitLogin} />
+                <input type="email" onChange={(event) =>  setEmail(event.target.value) } placeholder="Email" />
+                <input type="password" onChange={(event) =>  setPassword(event.target.value) } placeholder="Password" />
+                <input type="submit" onClick={submitSignup} />
             </form>
 
             <br />
