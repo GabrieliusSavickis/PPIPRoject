@@ -25,7 +25,7 @@ class MotorSportsApp extends React.Component {
           <Routes>
             <Route path="/" element={<Content />} exact />
             <Route path="/F1" element={<F1 />} />
-            <Route path="/" element={<MotoGP />} />
+            <Route path="/MotoGP" element={<MotoGP />} />
           </Routes>
 
         </div>
