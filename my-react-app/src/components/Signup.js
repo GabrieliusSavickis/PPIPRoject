@@ -1,12 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
+import axios from "axios"
+import { useNavigate, Link } from "react-router-dom"
 
 
-export class Signup extends React.Component {
-    render() {
-        return (
-        <div className="login">
-        
+function Login() {
+
+    //New variable to move between pages
+    const redirect = useNavigate();
+    //Empty values which will be stored by user's entry
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function submitLogin(event) {
+        //If the event does not get explicitly handled, its default action should not be taken
+        event.preventDefault();
+
+        try {
+            await axios.post("http://localhost:3000/signup", {
+                email, password
+            })
+            .then(res => {
+                if (res.credentials = "emailExist") {
+                    alert("User already exists")
+                    
+                }
+                else if (res.credentials = "emailNotExist") {
+                    redirect("/Home", { state: { id: email } })
+                }
+            })
+            .catch(event => {
+                alert("Wrong details entered")
+                console.log(event);
+            })
+        }
+        catch (event) {
+            console.log(event);
+        }
+    };
+
+    return (
+        <div className="signup">
+
+            <h1>Signup</h1>
+
+            {/*This is a form for a user to login*/}
+            <form action="POST">
+                <input type="email" onChange={(event) => { setEmail(event.target.value) }} placeholder="Email" />
+                <input type="password" onChange={(event) => { setPassword(event.target.value) }} placeholder="Password" />
+                <input type="submit" onClick={submitLogin} />
+            </form>
+
+            <br />
+            <p>OR</p>
+            <br />
+            {/*If the user doesn't have an account they can clik Sign up instead which will redirect them to the signup link*/}
+            <Link to="/signup">Login</Link>
         </div>
-        );
-    }
+    );
 }
+export default Login
