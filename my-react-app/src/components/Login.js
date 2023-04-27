@@ -17,7 +17,7 @@ function Login() {
 
         try {
             //Passing two variables
-            await axios.post('http://localhost:3000/', {
+            await axios.post('http://localhost:4000/', {
                 email, password
             })
                 .then(res => {
@@ -56,7 +56,7 @@ function Login() {
             <p>OR</p>
             <br />
             {/*If the user doesn't have an account they can clik Sign up instead which will redirect them to the signup link*/}
-            <Link to="/api/signup">Sign Up</Link>
+            <Link to="/signup">Sign Up</Link>
         </div>
     );
 }
