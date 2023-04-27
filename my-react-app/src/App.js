@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { F1 } from './components/F1';
 import Home  from './components/Home';
-import { MotoGP } from './components/MotoGP';
+import  MotoGP  from './components/MotoGP';
 import  Login  from './components/Login';
 import  Signup  from './components/Signup';
 import 'bootstrap/dist/css/bootstrap.min.css';
