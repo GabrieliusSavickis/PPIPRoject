@@ -20,19 +20,15 @@ function Signup() {
                 email,
                 password
             })
-            .then(res => {
-                if (res.data==="emailExist") {
-                    alert("User already exists")
-                    
-                }
-                else if (res.data==="emailNotExist") {
-                    redirect("/Home", { state: { id: email } })
-                }
-            })
-            .catch(event => {
-                alert("Wrong details entered")
-                console.log(event);
-            })
+                .then(res => {
+                    if (res.data === "emailExist") {
+                        alert("User already exists")
+
+                    }
+                    else if (res.data === "emailNotExist") {
+                        redirect("/Home", { state: { id: email } })
+                    }
+                })             
         }
         catch (event) {
             console.log(event);
@@ -46,9 +42,9 @@ function Signup() {
 
             {/*This is a form for a user to login*/}
             <form action="POST">
-                <input type="email" onChange={(event) =>  setEmail(event.target.value) } placeholder="Email" />
-                <input type="password" onChange={(event) =>  setPassword(event.target.value) } placeholder="Password" />
-                <input type="submit" onClick={submitSignup} />
+                <input type="email" onChange={(event) => setEmail(event.target.value)} placeholder="Email" />
+                <input type="password" onChange={(event) => setPassword(event.target.value)} placeholder="Password" />
+                <input type="submit" onClick={(event) => submitSignup(event)} />
             </form>
 
             <br />
