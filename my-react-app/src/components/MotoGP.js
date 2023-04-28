@@ -44,6 +44,20 @@ const MotoGP = () => {
           </Nav>
         </Navbar>
       </div>
+      <div className="grid-container">
+                <div className="item1">
+                    <h1>2023 Riders Championship</h1>
+                </div>
+                <div className="item2">
+                    <h2>Constructors Championship</h2>
+                </div>
+                <div className="item3">
+                    <h2>Riders</h2>
+                </div>
+                <div className="item4">
+                    <h2>Locations</h2>
+                </div>
+            </div>
       <h1>Rider Statistics</h1>
       {statistics && statistics.rider && (
         <div>

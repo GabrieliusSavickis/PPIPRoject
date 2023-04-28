@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { F1 } from './components/F1';
+import  F1  from './components/F1';
 import Home  from './components/Home';
 import  MotoGP  from './components/MotoGP';
 import  Login  from './components/Login';
