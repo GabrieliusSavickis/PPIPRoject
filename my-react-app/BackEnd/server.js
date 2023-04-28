@@ -44,7 +44,7 @@ app.post("/", cors(), async (req, res) => {
   const { email, password } = req.body
   try {
     //Check if the email already exists
-    const checkEmail = await collection.findOne({ email })
+    const checkEmail = await collection.findOne({ email:email })
     if (checkEmail) {
       res.json("emailExists")
     }
@@ -71,7 +71,7 @@ app.post("/signup", cors(), async (req, res) => {
 
   try {
     //Check if the email already exists
-    const checkEmail = await collection.findOne({ email })
+    const checkEmail = await collection.findOne({ email:email })
     if (checkEmail) {
       res.json("emailExists")
     }

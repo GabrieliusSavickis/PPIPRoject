@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import axios from "axios"
-import { useNavigate, Link } from "react-router-dom"
+import React, { useState } from 'react';
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 
 function Login() {
@@ -18,23 +18,18 @@ function Login() {
         try {
             //Passing two variables
             await axios.post('http://localhost:4000/', {
-                email, password
+                email, 
+                password
             })
                 .then(res => {
-                    if (res.data==="emailExist") {
+                    if (res.data=="emailExists") {
                         redirect("/Home", { state: { id: email } })
                     }
-                    else if (res.data==="emailNotExist") {
+                    else if (res.data=="emailNotExist") {
                         alert("Email does not exist")
                     }
                 })
-                .catch(event => {
-                    alert("Wrong details entered")
-                    console.log(event);
-                })
         }
-
-
         catch (event) {
             console.log(event);
         }
@@ -49,7 +44,7 @@ function Login() {
             <form action="POST">
                 <input type="email" onChange={(event) => { setEmail(event.target.value) }} placeholder="Email" />
                 <input type="password" onChange={(event) => { setPassword(event.target.value) }} placeholder="Password" />
-                <input type="submit" onClick={submitLogin} />
+                <input type="submit" onClick={(event) => submitLogin(event)} />
             </form>
 
             <br />

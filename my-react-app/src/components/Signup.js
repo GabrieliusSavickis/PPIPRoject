@@ -21,11 +21,11 @@ function Signup() {
                 password
             })
                 .then(res => {
-                    if (res.data === "emailExist") {
+                    if (res.data=="emailExists") {
                         alert("User already exists")
 
                     }
-                    else if (res.data === "emailNotExist") {
+                    else if (res.data=="emailNotExist") {
                         redirect("/Home", { state: { id: email } })
                     }
                 })             
