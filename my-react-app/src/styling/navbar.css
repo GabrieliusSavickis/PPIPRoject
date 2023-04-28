@@ -16,7 +16,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.HomNavbarMenu .nav-link:hover {
+.NavbarMenu .nav-link:hover {
   text-decoration: none;
   transform: translateY(-2px);
 }

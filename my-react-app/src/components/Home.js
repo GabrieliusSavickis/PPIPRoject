@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import '../styling/navbar.css';
-import '../styling/button-container.css';
+import '../styling/news-container.css';
 
 function Home() {
 
@@ -17,12 +17,30 @@ function Home() {
       </Navbar>
       <div className="Homepage">
         <h1>Hello and welcome to the home of MotorSports</h1>
-        <div className="button-container">
-          <a href="/F1" className="button">Go to F1</a>
-          <a href="/MotoGP" className="button">Go to MotoGP</a>
-        </div>
         <br/>
         <br/>
+        <h2>MotorSport News</h2>
+        <div className="news-container">
+            
+                <div className="item1">
+                    <h1>Image+clickable link to source</h1>
+                </div>
+                <div className="item2">
+                    <h2>Image+clickable link to source</h2>
+                </div>
+                <div className="item3">
+                    <h2>Image+clickable link to source</h2>
+                </div>
+                <div className="item4">
+                    <h2>Image+clickable link to source</h2>
+                </div>
+                <div className="item5">
+                    <h2>Image+clickable link to source</h2>
+                </div>
+                <div className="item6">
+                    <h2>Image+clickable link to source</h2>
+                </div>
+            </div>
         <br/>
         <br/>
         <br/>
