@@ -1,0 +1,26 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .button {
+    background-color: #f2f2f2;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .Homepage {
+    text-align: center;
+  }
