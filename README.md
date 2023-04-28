@@ -24,3 +24,8 @@ You may also see any lint errors in the console.
 ### `npm install express`
 ### `npm install bootstrap`
 ### `npm install react-router-dom`
+<<<<<<< HEAD
+=======
+test
+
+>>>>>>> fafe361 (Updated login functions. Login and Signup page works as intended and integrates with MongoDB)
