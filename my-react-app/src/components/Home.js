@@ -8,7 +8,7 @@ function Home() {
 
     //This hook returns the current location object
     return (
-        <div className="HomePage">
+        <div className="NavbarMenu">
             <Navbar>
                 <Nav className="mr-auto">
                     <Nav.Link href="/Home">Home</Nav.Link>

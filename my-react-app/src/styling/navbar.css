@@ -1,19 +1,22 @@
 /* Navbar styling */
-.HomePage .navbar {
+.NavbarMenu .navbar {
     background-color: red;
-    color: #fff;
     font-size: 20px;
     padding: 10px;
     display: flex;
     justify-content: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .HomePage .nav-link {
+  .NavbarMenu .nav-link {
     color: #fff;
     text-decoration: none;
-    margin-right: 10px;
+    margin-right: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
   }
   
-  .HomePage .nav-link:hover {
-    text-decoration: underline;
+  .NavbarMenu .nav-link:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
   }
