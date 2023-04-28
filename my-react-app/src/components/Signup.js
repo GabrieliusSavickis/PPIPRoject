@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
+import '../styling/signup.css';
 
 
 function Signup() {
@@ -40,18 +41,16 @@ function Signup() {
 
             <h1>Signup</h1>
 
-            {/*This is a form for a user to login*/}
-            <form action="POST">
+              {/*This is a form for a user to login*/}
+              <form action="POST">
+            <h1>Signup</h1>
                 <input type="email" onChange={(event) => setEmail(event.target.value)} placeholder="Email" />
                 <input type="password" onChange={(event) => setPassword(event.target.value)} placeholder="Password" />
                 <input type="submit" onClick={(event) => submitSignup(event)} />
+                <p>OR</p>
+                {/*If the user doesn't have an account they can clik Sign up instead which will redirect them to the signup link*/}
+                <Link to="/">Login</Link>
             </form>
-
-            <br />
-            <p>OR</p>
-            <br />
-            {/*If the user doesn't have an account they can clik Sign up instead which will redirect them to the signup link*/}
-            <Link to="/">Login</Link>
         </div>
     );
 }

@@ -1,0 +1,19 @@
+/* Navbar styling */
+.HomePage .navbar {
+    background-color: red;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .HomePage .nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .HomePage .nav-link:hover {
+    text-decoration: underline;
+  }

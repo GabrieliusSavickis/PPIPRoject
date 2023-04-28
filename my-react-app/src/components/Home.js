@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import '../styling/navbar.css';
 
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
     //This hook returns the current location object
     return (
         <div className="HomePage">
-            <Navbar bg="primary" variant="dark">
+            <Navbar>
                 <Nav className="mr-auto">
                     <Nav.Link href="/Home">Home</Nav.Link>
                     <Nav.Link href="/F1">Formula 1</Nav.Link>
