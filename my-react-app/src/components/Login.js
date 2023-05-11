@@ -38,9 +38,6 @@ function Login() {
 
     return (
         <div className="login">
-
-            <h1>Login</h1>
-
            {/*This is a form for a user to login*/}
            <form action="POST">
             <h1>Login</h1>

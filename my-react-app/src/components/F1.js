@@ -11,7 +11,7 @@ function F1() {
 
     useEffect(() => {
         axios
-          .get('http://ergast.com/api/f1/2023/drivers')
+          .get('http://ergast.com/api/f1/2023/drivers.json')
           .then(response => {
             setDrivers(response.data.MRData.DriverTable.Drivers);
           })
@@ -31,7 +31,6 @@ function F1() {
                     </Nav>
                 </Navbar>
             </div>
-
             <div className="grid-container">
                 <div className="item1">
                     <h1>2023 Drivers Championship</h1>
