@@ -1,36 +1,26 @@
-import '../styling/navbar.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import React, { useState, useEffect } from 'react';
+import '../styling/navbar.css';
+import '../styling/f1.css';
 
-const MotoGP = () => {
-  const [seasons, setSeasons] = useState(null);
+function MotoGP() {
+  const [team, setStages] = useState([]);
 
   useEffect(() => {
-    const getSeasons = async () => {
-      const url = 'http://localhost:3001/api/motogp/seasons';
-      const options = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-      
-
-      try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-        setSeasons(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getSeasons();
+    axios
+      .get('https://api.sportradar.us/motogp/trial/v2/:locale/teams/:sr:competitor:22035/profile.json?api_key=kevrm5qvp7u49hd3qqw7hvum')
+      .then(response => {
+        setStages(response.data.team);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
 
   return (
-    <div>
+    <div className="MotoGP">
       <div className="NavbarMenu">
         <Navbar>
           <Nav className="mr-auto">
@@ -40,29 +30,29 @@ const MotoGP = () => {
           </Nav>
         </Navbar>
       </div>
-      <div className="grid-container">
-                <div className="item1">
-                    <h1>2023 Riders Championship</h1>
-                </div>
-                <div className="item2">
-                    <h2>Constructors Championship</h2>
-                </div>
-                <div className="item3">
-                    <h2>Riders</h2>
-                </div>
-                <div className="item4">
-                    <h2>Locations</h2>
-                </div>
-            </div>
-      <h1>Season Statistics</h1>
-      {seasons && (
-        <div>
-          <p>Name: {seasons}</p>
+      <div className="motoGP-container">
+        <div className="item1">
+          <h1>MotoGP Seasons</h1>
+          <ul>
+            {team.map(stage => (
+              <li key={stage.description}>
+                {stage.scheduled} {stage.scheduled_end}
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
-
+        <div className="item2">
+          <h2>Circuits</h2>
+        </div>
+        <div className="item3">
+          <h2>Drivers</h2>
+        </div>
+        <div className="item4">
+          <h2>Locations</h2>
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default MotoGP;
