@@ -4,33 +4,29 @@ import Navbar from 'react-bootstrap/Navbar';
 import React, { useState, useEffect } from 'react';
 
 const MotoGP = () => {
-  const [statistics, setStatistics] = useState(null);
+  const [seasons, setSeasons] = useState(null);
 
   useEffect(() => {
-    const getStatistics = async () => {
-      const url = 'https://motogp2.p.rapidapi.com/api/data/get_rider_statistics_from_id';
+    const getSeasons = async () => {
+      const url = 'http://localhost:3001/api/motogp/seasons';
       const options = {
-        method: 'POST',
+        method: 'GET',
         headers: {
-          'content-type': 'application/json',
-          'X-RapidAPI-Key': 'd5f52960c8mshe65ce0ba97ab492p19e6a5jsn5041f65a619f',
-          'X-RapidAPI-Host': 'motogp2.p.rapidapi.com'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          rider_id: '71df6f0d-51c3-4cdb-9f5c-51939e6f33f2'
-        })
       };
+      
 
       try {
         const response = await fetch(url, options);
         const data = await response.json();
-        setStatistics(data);
+        setSeasons(data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    getStatistics();
+    getSeasons();
   }, []);
 
   return (
@@ -58,14 +54,10 @@ const MotoGP = () => {
                     <h2>Locations</h2>
                 </div>
             </div>
-      <h1>Rider Statistics</h1>
-      {statistics && statistics.rider && (
+      <h1>Season Statistics</h1>
+      {seasons && (
         <div>
-          <p>Name: {statistics.rider.name}</p>
-          <p>Number: {statistics.rider.number}</p>
-          <p>Points: {statistics.points}</p>
-          <p>Wins: {statistics.wins}</p>
-          <p>Podiums: {statistics.podiums}</p>
+          <p>Name: {seasons}</p>
         </div>
       )}
 
