@@ -52,5 +52,16 @@
   text-align: center;
 }
 
+.motoGP-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+  margin-top: 20px;
+  width: 80%;
+  max-width: 1200px;
+  margin: auto; /* center horizontally */
+}
+
 
 
